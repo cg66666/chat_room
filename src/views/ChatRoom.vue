@@ -207,8 +207,6 @@ watch(backMsg, async (nv) => {
       bottomAnchor.value.scrollIntoView({ behavior: 'smooth', block: 'end' })
     }
   } else {
-    console.log(222)
-
     ElMessage({
       type: 'error',
       message: '房间配置错误！',
