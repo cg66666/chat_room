@@ -3,7 +3,7 @@
  * @Author: cg
  * @Date: 2024-08-20 17:20:35
  * @LastEditors: cg
- * @LastEditTime: 2025-04-09 15:30:47
+ * @LastEditTime: 2025-04-10 10:35:58
  */
 import { onMounted, onUnmounted, ref } from 'vue'
 import dayjs from 'dayjs'
@@ -25,7 +25,10 @@ export function useWebSocket<T>(isHeart: boolean, pingConfig?: Record<any, any>,
   const backMsg = ref<T>()
   const initWs = () => {
     ws = new WebSocket(
-      wsUrl ?? 'wss://' + location.host + `/${import.meta.env.VITE_PREFIX}` + '/ws/chat'
+      wsUrl ??
+        (import.meta.env.MODE === 'production'
+          ? 'wss://' + location.host + `/${import.meta.env.VITE_PREFIX}` + '/ws/chat'
+          : import.meta.env.VITE_WS_URL)
     )
     // ws = new WebSocket(wsUrl ?? import.meta.env.VITE_WS_URL)
     ws.onopen = () => {
