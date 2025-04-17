@@ -98,16 +98,16 @@ const store = useLoginStore()
 const { mode, room, password, user } = useRoute().query as any
 
 if (!room || !user) {
-  console.log('room', room)
-  console.log('user', user)
-  console.log(333)
+  // console.log('room', room)
+  // console.log('user', user)
+  // console.log(333)
 
   ElMessage({
     type: 'error',
     message: '房间配置错误！',
     plain: true
   })
-  // router.push('home')
+  router.push('home')
 }
 
 const { sendMsg, backMsg, closeWs } = useWebSocket<wsType>(true, {
@@ -212,7 +212,7 @@ watch(backMsg, async (nv) => {
       message: '房间配置错误！',
       plain: true
     })
-    // router.push('home')
+    router.push('home')
     // console.log('执行退出操作')
   }
 })
