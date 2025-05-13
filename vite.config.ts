@@ -52,10 +52,6 @@ export default defineConfig(({ command, mode }) => {
           changeOrigin: true, // 允许跨域
           rewrite: (path) => path.replace(/^\/chat\/chat_room/, '/room')
         },
-        '/SSO': {
-          target: env.VITE_BASE_URL, // 真实接口地址, 后端给的基地址
-          changeOrigin: true // 允许跨域
-        },
         '/ws': {
           target: env.VITE_BASE_URL, // 真实接口地址, 后端给的基地址
           changeOrigin: true, // 允许跨域

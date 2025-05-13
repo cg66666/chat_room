@@ -3,10 +3,11 @@
  * @Author: cg
  * @Date: 2024-08-16 11:35:37
  * @LastEditors: cg
- * @LastEditTime: 2024-09-19 15:17:44
+ * @LastEditTime: 2025-05-13 14:25:41
  */
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+import VConsole from 'vconsole'
 
 import App from './App.vue'
 import router from './router'
@@ -38,5 +39,9 @@ const store = useLoginStore()
 store.checkLogin()
 
 app.use(router)
+
+if (import.meta.env.MODE === 'development') {
+  new VConsole()
+}
 
 app.mount('#app')
